@@ -1,7 +1,7 @@
 from src.clce.parser import CLCEParser
 
-print("=== CLCE AI Logic Layer v0.5 ===")
-print("Based on John F. Sowa 2004\n")
+print("=== CLCE AI Logic Layer v0.6 ===")
+print("Sowa 2004 examples - all should parse now\n")
 
 parser = CLCEParser()
 
@@ -21,5 +21,5 @@ for s in examples:
         print("OK")
         print(parser.pretty(tree))
     except Exception as e:
-        print("ERROR:", str(e)[:120])
+        print("ERROR:", str(e)[:150])
     print("---")

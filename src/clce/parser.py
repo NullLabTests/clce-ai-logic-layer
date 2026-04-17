@@ -13,10 +13,11 @@ class CLCEParser:
 
             quantifier: "Every" | "The" | "A" | "An"
             term: WORD
-            name: WORD | quoted_name
+            name: WORD | multi_name | quoted_name
             relational: WORD
             noun: WORD
             building_name: WORD+
+            multi_name: WORD+
             quoted_name: "'" WORD "'" | "'" WORD "''" WORD "'"
 
             WORD: /[a-zA-Z0-9_]+/
