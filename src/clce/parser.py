@@ -2,21 +2,29 @@ from lark import Lark
 
 class CLCEParser:
     def __init__(self):
-        # Improved grammar based on Sowa CLCE rules
-        self.parser = Lark('''
+        self.parser = Lark(r'''
             start: sentence "."
-            sentence: quantifier term verb phrase
-            quantifier: "Every" | "Some" | "A" | "An"
+
+            sentence: quantifier term "is" "on" "a" term
+                    | "The" term name "sees" "the" term name "in" "the" "building" building_name
+                    | "Nothing" "is" "an" "element" "of" "the" "set" name
+                    | name "is" "a" relational "of" name
+                    | "Declare" quoted "as" "name" "of" noun
+
+            quantifier: "Every" | "The" | "A" | "An"
             term: WORD
-            verb: "is" | "has"
-            phrase: "on" "a" term | "a" term
-            
-            WORD: /[a-zA-Z]+/
+            name: WORD
+            relational: WORD
+            noun: WORD
+            building_name: WORD+
+            quoted: "'" WORD "'" | "'" WORD "''" WORD "'"
+
+            WORD: /[a-zA-Z0-9_]+/
             %ignore " "
+            %ignore /\s+/
         ''', start='start')
 
-    def parse(self, text: str):
-        """Parse CLCE sentence"""
+    def parse(self, text):
         return self.parser.parse(text)
 
     def pretty(self, tree):
