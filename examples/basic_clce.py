@@ -1,8 +1,8 @@
 from src.clce.parser import CLCEParser
 from src.clce.translator import CLCEToFOL
 
-print("=== CLCE v1.0.0 ===")
-print("Parser + FOL Translator\n")
+print("=== CLCE v1.1 ===")
+print("Parser + Real FOL Translator\n")
 
 parser = CLCEParser()
 translator = CLCEToFOL()
