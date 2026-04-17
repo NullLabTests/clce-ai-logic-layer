@@ -1,7 +1,7 @@
 from src.clce.parser import CLCEParser
 from src.clce.translator import CLCEToFOL
 
-print("=== CLCE v1.1 ===")
+print("=== CLCE v1.2 ===")
 print("Parser + Real FOL Translator\n")
 
 parser = CLCEParser()
@@ -20,6 +20,6 @@ for s in examples:
     print("CLCE:", s)
     tree = parser.parse(s)
     print("AST OK")
-    fol = translator.to_fol(tree)
+    fol = translator.to_fol(s)
     print("FOL:", fol)
     print("---")
