@@ -1,9 +1,11 @@
 from src.clce.parser import CLCEParser
+from src.clce.translator import CLCEToFOL
 
-print("=== CLCE AI Logic Layer v0.7 ===")
-print("All Sowa 2004 core examples should now parse cleanly\n")
+print("=== CLCE v1.0.0 ===")
+print("Parser + FOL Translator\n")
 
 parser = CLCEParser()
+translator = CLCEToFOL()
 
 examples = [
     "Every cat is on a mat.",
@@ -16,10 +18,8 @@ examples = [
 
 for s in examples:
     print("CLCE:", s)
-    try:
-        tree = parser.parse(s)
-        print("OK")
-        print(parser.pretty(tree))
-    except Exception as e:
-        print("ERROR:", str(e)[:200])
+    tree = parser.parse(s)
+    print("AST OK")
+    fol = translator.to_fol(tree)
+    print("FOL:", fol)
     print("---")

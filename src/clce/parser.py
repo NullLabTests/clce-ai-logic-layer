@@ -4,13 +4,11 @@ class CLCEParser:
     def __init__(self):
         self.parser = Lark(r'''
             start: sentence "."
-
             sentence: quantifier term "is" "on" "a" term
                     | "The" term name "sees" "the" term name "in" "the" "building" building_name
                     | "Nothing" "is" "an" "element" "of" "the" "set" name
                     | name "is" "a" relational "of" name
                     | "Declare" decl_name "as" "name" "of" noun
-
             quantifier: "Every" | "The" | "A" | "An"
             term: WORD
             name: WORD | multi_name
@@ -19,8 +17,7 @@ class CLCEParser:
             building_name: WORD+
             multi_name: WORD+
             decl_name: WORD+ | quoted_name
-            quoted_name: "'" /[^']+/ "'" 
-
+            quoted_name: "'" /[^']+/ "'"
             WORD: /[a-zA-Z0-9_]+/
             %ignore " "
             %ignore /\s+/
