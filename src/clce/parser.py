@@ -9,15 +9,15 @@ class CLCEParser:
                     | "The" term name "sees" "the" term name "in" "the" "building" building_name
                     | "Nothing" "is" "an" "element" "of" "the" "set" name
                     | name "is" "a" relational "of" name
-                    | "Declare" quoted "as" "name" "of" noun
+                    | "Declare" name "as" "name" "of" noun
 
             quantifier: "Every" | "The" | "A" | "An"
             term: WORD
-            name: WORD
+            name: WORD | quoted_name
             relational: WORD
             noun: WORD
             building_name: WORD+
-            quoted: "'" WORD "'" | "'" WORD "''" WORD "'"
+            quoted_name: "'" WORD "'" | "'" WORD "''" WORD "'"
 
             WORD: /[a-zA-Z0-9_]+/
             %ignore " "

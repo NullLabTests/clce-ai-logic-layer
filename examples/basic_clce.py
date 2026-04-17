@@ -1,7 +1,7 @@
 from src.clce.parser import CLCEParser
 
-print("=== CLCE AI Logic Layer v0.4 ===")
-print("Better parser based on Sowa 2004\n")
+print("=== CLCE AI Logic Layer v0.5 ===")
+print("Based on John F. Sowa 2004\n")
 
 parser = CLCEParser()
 
@@ -10,7 +10,8 @@ examples = [
     "The woman Sue sees the cat Yojo in the building Grand Central Terminal.",
     "Nothing is an element of the set empty_set.",
     "Bob is a child of Sue.",
-    "Declare Grand Central Terminal as name of building."
+    "Declare Grand Central Terminal as name of building.",
+    "Declare 'Grand Central Terminal' as name of building."
 ]
 
 for s in examples:
@@ -20,5 +21,5 @@ for s in examples:
         print("OK")
         print(parser.pretty(tree))
     except Exception as e:
-        print("ERROR:", str(e)[:100])
+        print("ERROR:", str(e)[:120])
     print("---")
